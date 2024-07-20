@@ -5,11 +5,19 @@ REPONAME="https://github.com/Eifal/AOSP_releases"
 EXTRAFILES=$1
 ZIP_FILES=""
 
-# Check if token.txt exists
-if [ ! -f token.txt ]; then
-    echo "token.txt doesn't exist!"
-    exit 1
-fi
+# Function to create token.txt if it does not exist
+create_token_file() {
+    if [ ! -f token.txt ]; then
+        echo "token.txt does not exist. Please enter your GitHub token."
+        read -s -p "Enter GitHub Token: " GITHUB_TOKEN
+        echo "$GITHUB_TOKEN" > token.txt
+        echo
+        echo "Token has been saved to token.txt."
+    fi
+}
+
+# Create token.txt if it does not exist
+create_token_file
 
 # Check if gh is installed
 if ! command -v gh &> /dev/null; then
@@ -23,7 +31,7 @@ fi
 GH_UPLOAD_LIMIT=3758096384
 echo "Upload Limit is set to $GH_UPLOAD_LIMIT"
 
-# Authenticate against github.com by reading the token from a file
+# Authenticate against github.com by reading the token from the file
 gh auth login --with-token < token.txt
 
 # Now do the same for ZIP_FILES
