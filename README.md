@@ -1,3 +1,5 @@
+
+[![Github All Releases](https://img.shields.io/github/downloads/eifal/AOSP_releases/total.svg)]()
 # AOSP releases
 This repository is for uploading several ROMs that I have built.
 
