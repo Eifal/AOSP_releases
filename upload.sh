@@ -27,8 +27,8 @@ if ! command -v gh &> /dev/null; then
     echo "gh installed."
 fi
 
-# Set Upload Limit to 3.5GB
-GH_UPLOAD_LIMIT=5368709120
+# Set Upload Limit
+GH_UPLOAD_LIMIT=2684354560
 echo "Upload Limit is set to $GH_UPLOAD_LIMIT"
 
 # Authenticate against github.com by reading the token from the file
